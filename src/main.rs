@@ -21,7 +21,6 @@ fn convert_for_consonant(word: String) -> String {
 
 fn convert_for_vocal(mut word: String) -> String { 
     word.push_str("hay");
-    word.to_string();
     word
 }
 
@@ -36,12 +35,13 @@ fn main() {
     println!("Please input a word.");
     let mut input = String::new();
     io::stdin().read_line(&mut input).unwrap();
-    let mut input_letters = input.chars();
+    let trimmed_input = input.trim();
+    let mut input_letters = trimmed_input.chars();
     let input_first_letter = input_letters.next();
 
     if is_vowel(input_first_letter) {
-        println!("{}", convert_for_vocal(input));
+        println!("{}", convert_for_vocal(trimmed_input.to_string()));
     } else {
-        println!("{}", convert_for_consonant(input));
+        println!("{}", convert_for_consonant(trimmed_input.to_string()));
     }
 }   
